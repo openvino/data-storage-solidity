@@ -107,7 +107,7 @@ contract('WeatherStationData', function(accounts) {
                 data[10].toNumber() == global.data[3].humidity;
       })
    });
-
+ 
    it("Logic authorization can't be modified.", function () {
       return WeatherStationData.deployed().then(function(instance) {
          return !instance.setLogic(accounts[2], {from: accounts[2]})

@@ -33,7 +33,7 @@ contract('WeatherStation', function(accounts) {
          global.data_ws[i].wind_pressure *= 100;
          global.data_ws[i].wind_altitude *= 100;
          global.data_ws[i].wind_sealevel_pressure *= 100;
-         global.data_ws[i].humidity *= 100; 
+         global.data_ws[i].humidity *= 100;
 
          global.data_ws[i].hash = await Utils.deployed().then(function(instance) {
             return instance.calculate2_sha256.call(global.data_ws[i].timestamp, global.data_ws[i].rain, global.data_ws[i].wind_speed, global.data_ws[i].wind_gust, global.data_ws[i].wind_direction,

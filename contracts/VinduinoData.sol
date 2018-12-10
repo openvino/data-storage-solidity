@@ -28,6 +28,8 @@ contract VinduinoData {
 
    Data[] public vinduino_information;   /* data storage array. */
 
+   event DataInserted(uint position);
+
    /**
       @notice     Constructor of the contract.
       @param      _private_key    private_key of the vinduino tied to this contract.
@@ -56,6 +58,7 @@ contract VinduinoData {
    */
    function addData(string timestamp, uint16 _sensor2, uint16 _sensor1, uint16 _sensor05, uint16 _sensor005, uint8 _battery, uint16 _temperature) public onlyLogic() {
       vinduino_information.push(Data(timestamp, _sensor2, _sensor1, _sensor05, _sensor005, _battery, _temperature));
+      emit DataInserted(vinduino_information.length - 1);
    }
 
    /**

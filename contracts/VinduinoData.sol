@@ -63,8 +63,11 @@ contract VinduinoData {
 
    /**
       @notice     Getter of the number of information inserted.
-      @returns    Number of rows inserted.
+      @return    Number of rows inserted.
    */
+   function getNumberRegisters() view public returns(uint) {
+      return vinduino_information.length;
+   }
 
    /**
       @notice    Sets the address of the logical contract.

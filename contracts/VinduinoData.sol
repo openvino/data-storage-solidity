@@ -13,6 +13,7 @@ contract VinduinoData {
 
     struct Data {
 
+      string timestamp;
       uint16 sensor2;           /* 2m sensor.         */
       uint16 sensor1;           /* 1m sensor.         */
       uint16 sensor05;          /* 0.5 sensor.        */
@@ -53,9 +54,14 @@ contract VinduinoData {
       @param     _battery        battery voltage.
       @param     _temperature    temperature.
    */
-   function addData(uint16 _sensor2, uint16 _sensor1, uint16 _sensor05, uint16 _sensor005, uint8 _battery, uint16 _temperature) public onlyLogic() {
-      vinduino_information.push(Data(_sensor2, _sensor1, _sensor05, _sensor005, _battery, _temperature));
+   function addData(string timestamp, uint16 _sensor2, uint16 _sensor1, uint16 _sensor05, uint16 _sensor005, uint8 _battery, uint16 _temperature) public onlyLogic() {
+      vinduino_information.push(Data(timestamp, _sensor2, _sensor1, _sensor05, _sensor005, _battery, _temperature));
    }
+
+   /**
+      @notice     Getter of the number of information inserted.
+      @returns    Number of rows inserted.
+   */
 
    /**
       @notice    Sets the address of the logical contract.

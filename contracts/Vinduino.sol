@@ -33,10 +33,10 @@ contract Vinduino {
       @param     _temperature    temperature.
     */
 
-   function post(uint16 _sensor2, uint16 _sensor1, uint16 _sensor05, uint16 _sensor005, uint8 _battery, uint16 _temperature, bytes32 _hash) public returns (bool) {
+   function post(string timestamp, uint16 _sensor2, uint16 _sensor1, uint16 _sensor05, uint16 _sensor005, uint8 _battery, uint16 _temperature, bytes32 _hash) public returns (bool) {
       bytes32 key = data.getKey();
-      if (sha256(abi.encodePacked(_sensor2, _sensor1, _sensor05, _sensor005, _battery, _temperature, key)) != _hash) return false;
-      data.addData(_sensor2, _sensor1, _sensor05, _sensor005, _battery, _temperature);
+      if (sha256(abi.encodePacked(timestamp, _sensor2, _sensor1, _sensor05, _sensor005, _battery, _temperature, key)) != _hash) return false;
+      data.addData(timestamp, _sensor2, _sensor1, _sensor05, _sensor005, _battery, _temperature);
       return true;
    }
 

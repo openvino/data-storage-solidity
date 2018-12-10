@@ -13,18 +13,17 @@ contract WeatherStationData {
 
     struct Data {
 
-      string _timestamp;
-      uint16 _rain;
-      uint16 _wind_speed;
-      uint16 _wind_gust;
-      uint16 _wind_direction;
-      uint16 _wind_direction_voltage;
-      uint16 _temperature;
-      uint16 _pressure;
-      uint16 _altitude;
-      uint16 _sealevel_pressure;
-      uint16 _humidity;
       string timestamp;
+      uint16 rain;
+      uint16 wind_speed;
+      uint16 wind_gust;
+      uint16 wind_direction;
+      uint16 wind_direction_voltage;
+      uint16 temperature;
+      uint16 pressure;
+      uint16 altitude;
+      uint16 sealevel_pressure;
+      uint16 humidity;
 
    }
 

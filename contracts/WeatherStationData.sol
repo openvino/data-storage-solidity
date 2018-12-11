@@ -18,11 +18,8 @@ contract WeatherStationData {
       uint16 wind_speed;
       uint16 wind_gust;
       uint16 wind_direction;
-      uint16 wind_direction_voltage;
-      uint16 temperature;
       uint16 pressure;
-      uint16 altitude;
-      uint16 sealevel_pressure;
+      uint16 temperature;
       uint16 humidity;
 
    }
@@ -58,15 +55,12 @@ contract WeatherStationData {
       @param     _wind_speed              Wind speed (MPH).
       @param     _wind_gust               Wind gust (MPH).
       @param     _wind_direction          Wind direction (Degrees).
-      @param     _wind_direction_voltage  Wind direction (V).
-      @param     _temperature             Temperature (C).
       @param     _pressure                Pressure (KPa).
-      @param     _altitude                Altitude (m)
-      @param     _sealevel_pressure       Sealevel Pressure (KPa).
+      @param     _temperature             Temperature (C).
       @param     _humidity                Humidity.
    */
-   function addData(string _timestamp, uint16 _rain, uint16 _wind_speed, uint16 _wind_gust, uint16 _wind_direction, uint16 _wind_direction_voltage, uint16 _temperature, uint16 _pressure, uint16 _altitude, uint16 _sealevel_pressure, uint16 _humidity) public onlyLogic() {
-      weatherstation_information.push(Data(_timestamp, _rain, _wind_speed, _wind_gust, _wind_direction, _wind_direction_voltage, _temperature, _pressure, _altitude, _sealevel_pressure, _humidity));
+   function addData(string _timestamp, uint16 _rain, uint16 _wind_speed, uint16 _wind_gust, uint16 _wind_direction, uint16 _pressure, uint16 _temperature, uint16 _humidity) public onlyLogic() {
+      weatherstation_information.push(Data(_timestamp, _rain, _wind_speed, _wind_gust, _wind_direction, _pressure, _temperature, _humidity));
       emit DataInserted(weatherstation_information.length - 1);
    }
 

@@ -30,20 +30,16 @@ contract WeatherStation {
       @param     _wind_speed              Wind speed (MPH).
       @param     _wind_gust               Wind gust (MPH).
       @param     _wind_direction          Wind direction (Degrees).
-      @param     _wind_direction_voltage  Wind direction (V).
-      @param     _temperature             Temperature (C).
       @param     _pressure                Pressure (KPa).
-      @param     _altitude                Altitude (m)
-      @param     _sealevel_pressure       Sealevel Pressure (KPa).
+      @param     _temperature             Temperature (C).
       @param     _humidity                Humidity.
       @param     _hash                    Digital signature of the packed data.
 
     */
-
-   function post(string _timestamp, uint16 _rain, uint16 _wind_speed, uint16 _wind_gust, uint16 _wind_direction, uint16 _wind_direction_voltage, uint16 _temperature, uint16 _pressure, uint16 _altitude, uint16 _sealevel_pressure, uint16 _humidity, bytes32 _hash) public returns (bool) {
+   function post(string _timestamp, uint16 _rain, uint16 _wind_speed, uint16 _wind_gust, uint16 _wind_direction, uint16 _pressure, uint16 _temperature, uint16 _humidity, bytes32 _hash) public returns (bool) {
       bytes32 key = data.getKey();
-      if (sha256(abi.encodePacked(_timestamp, _rain, _wind_speed, _wind_gust, _wind_direction, _wind_direction_voltage, _temperature, _pressure, _altitude, _sealevel_pressure, _humidity, key)) != _hash) return false;
-      data.addData(_timestamp, _rain, _wind_speed, _wind_gust, _wind_direction, _wind_direction_voltage, _temperature, _pressure, _altitude, _sealevel_pressure, _humidity);
+      if (sha256(abi.encodePacked(_timestamp, _rain, _wind_speed, _wind_gust, _wind_direction, _pressure, _temperature, _humidity, key)) != _hash) return false;
+      data.addData(_timestamp, _rain, _wind_speed, _wind_gust, _wind_direction, _pressure, _temperature, _humidity);
       return true;
    }
 
